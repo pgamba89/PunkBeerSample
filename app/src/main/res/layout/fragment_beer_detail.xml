@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.punkBeerSample.ui.beerDetail.BeerDetailModelView" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/main_photo_image"
+            android:layout_width="109dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{viewModel.beerSelected.image_url}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/description_value_text"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/character_type_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/beerName"
+            android:textColor="#de000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/main_photo_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@{viewModel.beerSelected.name}" />
+
+        <TextView
+            android:id="@+id/description_value_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/description"
+            android:textColor="#de000000"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/character_type_text"
+            app:layout_constraintTop_toBottomOf="@+id/character_type_text"
+            tools:text="@{viewModel.beerSelected.description}" />
+
+        <TextView
+            android:id="@+id/repo_language"
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/IBU"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/character_type_text"
+            app:layout_constraintTop_toBottomOf="@+id/description_value_text"
+            tools:text="@{`IBU: ` + viewModel.beerSelected.ibu}" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/character_type_text"
+            app:layout_constraintTop_toBottomOf="@+id/repo_language"
+            tools:text="@{`PH: ` + viewModel.beerSelected.ph}"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/character_type_text"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="@{`Brewers Tips: ` + viewModel.beerSelected.brewers_tips}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

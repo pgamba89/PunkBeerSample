@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PunkBeerSample</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search</string>
+    <string name="IBU">IBU</string>
+    <string name="description">Description</string>
+    <string name="beerName">BeerName</string>
+</resources>

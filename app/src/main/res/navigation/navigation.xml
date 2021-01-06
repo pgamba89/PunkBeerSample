@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/beersListFragment">
+    <fragment
+        android:id="@+id/beersListFragment"
+        android:name="com.example.punkBeerSample.ui.beersList.BeersListFragment"
+        android:label="BeersListFragment" >
+        <action
+            android:id="@+id/action_beersListFragment_to_beerDetailFragment"
+            app:destination="@id/beerDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/beerDetailFragment"
+        android:name="com.example.punkBeerSample.ui.beerDetail.BeerDetailFragment"
+        android:label="BeerDetailFragment" >
+        <argument
+            android:name="beerSelected"
+            app:argType="com.example.punkBeerSample.model.BeerModel" />
+    </fragment>
+</navigation>
