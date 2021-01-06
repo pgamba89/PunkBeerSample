@@ -2,13 +2,11 @@ package com.example.punkBeerSample.ui.beersList
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.punkBeerSample.R
 import com.example.punkBeerSample.databinding.FragmentRecyclerviewListBinding
@@ -68,19 +66,9 @@ class BeersListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun initAdapter() {
         binding.recyclerviewlist.adapter = adapter
-
-        adapter.addLoadStateListener { loadState ->
-            val errorState = loadState.source.append as? LoadState.Error
-                ?: loadState.source.prepend as? LoadState.Error
-                ?: loadState.append as? LoadState.Error
-                ?: loadState.prepend as? LoadState.Error
-            errorState?.let {
-                Toast.makeText(
-                    context, "${it.error}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
+        binding.recyclerviewlist.adapter = adapter.withLoadStateHeader(
+            header = RecyclerLoadStateAdapter()
+        )
     }
 
     private fun subscribeObservers() {

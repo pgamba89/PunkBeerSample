@@ -6,5 +6,7 @@ class Constants {
 
         const val LAST_SEARCH_QUERY: String = "last_search_query"
         const val DEFAULT_QUERY = ""
+
+        const val BEER_SEARCH_ERROR = "Ups! Beer not found, Try Again!"
     }
 }
