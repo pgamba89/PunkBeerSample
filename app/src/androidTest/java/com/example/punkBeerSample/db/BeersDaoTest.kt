@@ -37,4 +37,13 @@ class BeersDaoTest : BeersDatabaseTest() {
         assertEquals(beers.size, 2)
     }
 
+    @Test
+    fun cleanAll() = runBlockingTest {
+        val list = listOf(BeersFactory.createBeer("DEFAULT"), BeersFactory.createBeer("DEFAULT2"))
+        db.beersDao().insertAll(list)
+
+        db.beersDao().deleteAll()
+
+        assert(db.beersDao().getAll().isEmpty())
+    }
 }
