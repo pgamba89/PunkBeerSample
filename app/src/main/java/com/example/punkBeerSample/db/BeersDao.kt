@@ -13,6 +13,9 @@ interface BeersDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(beers: List<BeerModel>)
 
+    @Query("SELECT * FROM beers")
+    fun getAll(): List<BeerModel>
+
     @Query("SELECT * FROM beers WHERE name LIKE :queryString")
     fun beerById(queryString: String): PagingSource<Int, BeerModel>
 
